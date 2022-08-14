@@ -4,7 +4,7 @@ runtime:
 site:
   title: Modern Application Development Roadshow - Dev Track
   url: http://redhat-scholars.github.io/mad-dev-guides-m5/
-  start_page: mad-dev-guides-m5::1-introduction.adoc
+  start_page: mad-dev-guides-m5::introduction.adoc
 
 content:
   sources:

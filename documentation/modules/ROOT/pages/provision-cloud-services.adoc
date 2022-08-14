@@ -1,0 +1,66 @@
+:icons: font
+
+= Provision Red Hat OpenShift Application Services
+
+Red Hat OpenShift Application Services is a growing collection of managed cloud services which provide a streamlined developer experience for building and deploying event streams based applications, design and manage API specifications and schemas, and manage and secure APIs.
+
+As part of this workshop you provision and use the following Red Hat Application Services:
+
+* OpenShift Streams for Apache Kafka
+* OpenShift Connectors
+* OpenShift Service Registry
+* OpenShift API Designer
+* OpenShift API Management
+
+== Provision a Streams for Apache Kafka instance
+
+In this step you provision a Streams for Apache Kafka instance which will be used to produce a stream of activity tracking events and for the records produced by users placing an order.
+
+Red Hat OpenShift Application Services are provisioned and managed through the Red Hat Hybrid Cloud Console at link:https://console.redhat.com[console.redhat.com,role=external,window=_blank] or with the `rhoas` CLI. This workshop uses the Hybrid Console.
+
+. Navigate to https://console.redhat.com[console.redhat.com,role=external,window=_blank] and log in with your Red Hat account credentials.
++
+[NOTE]
+====
+If you created a new Red Hat account as explained in the previous step, you should already be logged in into the Hybrid Cloud Console.
+You will need to accept another set of terms and conditions in order to create a Streams for Apache Kafka instance.
+====
+
+. On the https://console.redhat.com[console.redhat.com] landing page, select *Application and Data Services* from the menu on the left.
+
+. On the Application Services landing page, select *Streams for Apache Kafka → Kafka Instances*.
++
+image::console-redhat-com-kafka-instances.png[]
+
+. On the *Kafka Instances* overview page, click the *Create Kafka instance* button. Enter `globex` as the name of the instance and select the relevant _Cloud region_ for your Kafka instance and click *Create instance*. This starts the provisioning process for your Kafka instance.
++
+[NOTE]
+====
+This will create a evaluation Kafka instance, which will remain available for 48 hrs. The Kafka instance comes with some limitations, which are listed in the *Create instance* window. The eval Kafka instance consists of a single broker, while production Kafka brokers have a minimum of 3 brokers. 
+====
+
+. The new Kafka instance is listed in the instances table. After a couple of minutes, your instance should be marked as ready. 
++
+image::console-redhat-com-kafka-instance-ready.png[]
+
+. When the instance _Status_ is `Ready`, you can start using the Kafka instance. You can use the options icon (three vertical dots) to view, connect to, or delete the instance as needed.
+
+Normally, when using Streams for Apache Kafka, the next steps would be to create a service account and set up the Access Control List for that service account. However, when using Service Binding to connect applications to the Kafka instance, a service account is created as part of the binding. Once the service account is created, you will need to setup the required permissions for that service account. An alternative is to set up wildcard permissions (valid for all service accounts), but this is generally considered less secure.  
+
+== Provision a Service Registry instance
+
+In this step you provision a Service Registry instance. The Service Registry instance will be used in this workshop to store OpenAPI spec documents.
+
+. On the https://console.redhat.com[console.redhat.com] landing page, select *Application and Data Services* from the menu on the left.
+
+. On the Application Services landing page, select *Service Registry → Service Registry Instances*.
++
+image::console-redhat-com-service-registry-instances.png[]
+
+. On the *Service Registry Instances* overview page, click the *Create Service Registry instance* button. Enter `globex` as the name of the instance and click *Create*. This starts the provisioning process for your Service Registry instance.
+
+. The new Service Registry instance is listed in the instances table. After a couple of seconds, your instance should be marked as ready. 
++
+image::console-redhat-com-service-registry-instance-ready.png[]
+
+Leave the browser tab open, as you will have to come back to it later in the workshop.
