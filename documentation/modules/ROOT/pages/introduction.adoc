@@ -1,54 +1,42 @@
-= Introduction
+:imagesdir: ../assets/images
 
-This section of the workshop gives you some background and context around the workshop.
+= Introduction
 
 == Globex Digital Transformation Journey
 
 Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was re-hosted on OpenShift.
 
-image::globex-appmod.png[]
-
-The devops team also adopted GitOps practices for rapid and continuous deployment.
-
-The outcome of this application modernization effort is an increased velocity of application development and deployment, and an overall faster go to market for new functionalities.
-
 A schematic overview of the current state of the application after the first phase of the application modernization effort:
 
-image::globex-phase1.png[]
+image::globex-phase1.png[width=60%]
 
-* The application is split into microservices and runs on OpenShift. As such it inherits all the benefits of the de-facto enterprise Kubernetes distribution: horizontal scaling, automated rollout/rollback, bin-packing, self healing, service discovery, load balancing, etc.
+To futher enhance the Globex Retail application, the business comes up with new requirements
 
-* Adoption of GitOps practices decreases Lead Time for Change, Mean Time to Recover and Change Failure Rate while increasing Deployment Frequency
-
-Taking advantage of this new momentum, the business comes up with new requirements for the e-commerce application:
-
-* Multi-channel approach: includes a mobile application in addition to the retail web-site. Globex does not have the necessary expertise in mobile development, so development will have to be outsourced.
 * The ability to track user activity on the website and the mobile application.
 * Highlight products which generate most customer interest as featured products.
 * Provide a personalized experience for users on the website and mobile application.
 
 == Challenges
 
-There are however a number of challenges with the new requirements:
+Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.
 
-* Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.
-* The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.
-* Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.
+== Solution Approach
+In order to cope with these challenges: +
 
-In order to cope with these challenges, the development team decides for a new approach.
+* The team decides to use the Kafka ecosystem to track the user activity since it can scale 
+* A preference for *managed cloud services* for an easy and rapid adoption of new middleware components like  Apache Kafka. 
 
-*API First approach*: before tackling the development of new services, the API contract is formalized in a OpenAPI spec document. This API design phase is done collaboratively with all stakeholders.
-Once a first version of the OpenAPI spec document is ready, it is pushed and managed in a service registry, which acts a the system of truth.
-Mocks are created for the API.
+This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.
 
-*Parallel Development* streams. The API first approach enables parallel development streams. UI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
-In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.
 
-*Manage and Secure the APIs*. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other third party applications.
+== Goals of this lab
+In this module you will follow this journey:
 
-Adoption of *Apache Kafka* as a streaming platform to ingest and process user activity event streams.
+* Setup managed Kafka through Red Hat OpenShift Streams for Kafka
+* Add event streaming to the Globex retail application to track use activity 
+* Use Kafka streams to then highlight featured products
+* Once an order is placed, and the records are pushed into a Kafka topic, leverage Red Hat OpenShift Connectors to connect the Streams for Apache Kafka instance to a third party cloud service to e.g. process or analyze the orders. 
 
-A preference for *managed cloud services* for an easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka. This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.
 
 == Runtime Architecture
 
@@ -67,7 +55,6 @@ Each of these activities generate a stream of events which are captured by  the 
 The events can then be consumed by other services such as the *Product Recommendation* service which powers the list of featured products.
 A new *Featured Products* section is created in the front-end web application to showcase the top featured products. 
 
-Since Globex does not want to allow direct access to these backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform.
 
 == Deployment Architecture
 

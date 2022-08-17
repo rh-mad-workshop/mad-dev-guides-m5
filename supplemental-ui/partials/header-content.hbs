@@ -2,45 +2,53 @@
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () { 
       const urlParams = new URLSearchParams(window.location.search);
+
+      console.log("urlParams", urlParams)      
       const userId = urlParams.get('USERID');
-      const subDomain = urlParams.get('SUBDOMAIN');
-      const tomcatIP = urlParams.get('TOMCATIP');
+      const subdomain = urlParams.get('SUBDOMAIN'); 
       if (userId) {
-        showUserId( userId );
+        showUserId( userId, subdomain);
       }
       else {
-        showUserIdForm();
+        showUserIdForm(subdomain);
       }
     } );
 
 
-    function showUserId( userId ) {
+    function showUserId( userId, subdomain) {
       document.getElementById('navbar-form-empty').style.display = "none";
       document.getElementById('navbar-form-filled').style.display = "flex";
       document.getElementById('username').textContent = userId;
-      document.getElementById('subDomain').value = subDomain;
-      document.getElementById('tomcatIP').value = tomcatIP;
+      document.getElementById('catalog_url').value = catalog_url; 
+      document.getElementById('openshift_console').value = openshift_console; 
 
     }
 
-    function showUserIdForm( userId ) {
+    function showUserIdForm( subdomain ) {
       document.getElementById('navbar-form-empty').style.display = "flex";
       document.getElementById('navbar-form-filled').style.display = "none";
+      document.getElementById('subdomain').value = subdomain; 
+
     }
 
     function goWithUserId() {
       elUserIdInput = document.getElementById('userId');
-      elSubDomainInput = document.getElementById('subDomain');
-      elTomcatIPInput = document.getElementById('tomcatIP');
-
-      window.location.search = ('&USERID=' + elUserIdInput.value + '&SUBDOMAIN=' + elSubDomainInput.value + '&TOMCATIP=' + elTomcatIPInput.value);
+      elSubdomainInput = document.getElementById('subdomain');
+      window.location.search = ('&USERID=' + elUserIdInput.value  + '&SUBDOMAIN=' + elSubdomainInput.value);
     }
+
+    function recycle() {
+      document.getElementById('userId').value='';
+      elSubdomainInput = document.getElementById('subdomain');
+      window.location.search = ('&USERID=&SUBDOMAIN=' + elSubdomainInput );
+    }
+
 
   </script>
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://www.redhat.com/en/products/runtimes" target="_blank"><img
-          src="{{uiRootPath}}/img/Logo-Red_Hat-Runtimes-A-Reverse-RGB.png" height="40px" alt="Red Hat Runtimes"></a>
+      <a class="navbar-item" href="https://www.redhat.com/en/technologies/cloud-computing/openshift/cloud-services" target="_blank"><img
+          src="{{uiRootPath}}/img/Logo-Red_Hat-Cloud_Services-A-Reverse-RGB.png" height="40px" alt="Red Hat Cloud Services"></a>
       <a class="navbar-item" href="{{{or site.url (or siteRootUrl siteRootPath)}}}" style="color: white;"><h3>{{site.title}}</h3></a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
@@ -61,8 +69,7 @@
               <span class="navbar-text" style="margin-left: 1rem; margin-right: 1rem;">|</span>
             </div>
             <input size="40" id="userId" type="text" placeholder="Enter USER ID">
-            <input type="hidden" id="subDomain" name="subDomain" value="">
-            <input type="hidden" id="tomcatIP" name="tomcatIP" value="">
+            <input type="hidden" id="subdomain" name="SUBDOMAIN" value="" placeholder="Enter Subdomain">
           </form>
         </div>
         
