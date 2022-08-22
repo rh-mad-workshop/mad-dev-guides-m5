@@ -149,4 +149,10 @@ Open the browser tab pointing to link:https://webhook.site[webhook.site, role=ex
 +
 image::webhook-site-post-messages.png[]
 
-Congratulations! You reached the end of this part of the workshop, in which you integrated the Globex Coolstuff application with an external cloud service, using the OpenShift Streams for Apache Kafka  and OpenShift Connectors managed cloud services. 
+
+== Summary
+
+Congratulations! You have completed the *Extend an app using event-driven architecture* module in which
+
+* you added event streaming capabilities to the Globex Coolstuff application, using the OpenShift Streams for Apache Kafka managed cloud service
+* you integrated the Globex Coolstuff application with an external cloud service, using the OpenShift Streams for Apache Kafka  and OpenShift Connectors managed cloud services

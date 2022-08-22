@@ -45,21 +45,3 @@ image::console-redhat-com-kafka-instance-ready.png[]
 . When the instance _Status_ is `Ready`, you can start using the Kafka instance. You can use the options icon (three vertical dots) to view, connect to, or delete the instance as needed.
 
 Normally, when using Streams for Apache Kafka, the next steps would be to create a service account and set up the Access Control List for that service account. However, when using Service Binding to connect applications to the Kafka instance, a service account is created as part of the binding. Once the service account is created, you will need to setup the required permissions for that service account. An alternative is to set up wildcard permissions (valid for all service accounts), but this is generally considered less secure.  
-
-== Provision a Service Registry instance
-
-In this step you provision a Service Registry instance. The Service Registry instance will be used in this workshop to store OpenAPI spec documents.
-
-. On the link:https://console.redhat.com[console.redhat.com^,window=redhatconsole] landing page, select *Application and Data Services* from the menu on the left.
-
-. On the Application Services landing page, select *Service Registry → Service Registry Instances*.
-+
-image::console-redhat-com-service-registry-instances.png[]
-
-. On the *Service Registry Instances* overview page, click the *Create Service Registry instance* button. Enter `globex` as the name of the instance and click *Create*. This starts the provisioning process for your Service Registry instance.
-
-. The new Service Registry instance is listed in the instances table. After a couple of seconds, your instance should be marked as ready. 
-+
-image::console-redhat-com-service-registry-instance-ready.png[]
-
-Leave the browser tab open, as you will have to come back to it later in the workshop.
