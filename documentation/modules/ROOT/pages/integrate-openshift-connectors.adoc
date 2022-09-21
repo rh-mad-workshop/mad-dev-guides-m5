@@ -36,7 +36,7 @@ These steps are very similar to what you did in previous sections of the lab, so
 
 ==== [underline]#*Bind the Order Placement application to Streams for Apache Kafka*#
 
-. In a browser window, navigate to the Topology view of  *globex-%USERID%* namespace in your OpenShift cluster at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,window=openshiftconsole]. 
+. In a browser window, navigate to the Topology view of  *globex-%USERID%* namespace in your OpenShift cluster at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,window=openshiftconsole]. 
 . Hover over the *order-placement* deployment, and grab the arrow that appears. Drag the arrow to the *KafkaConnection* icon. When reaching the KafkaConnection icon, a text box `Create Service Binding` appears. Release the arrow. Click *Create* in the *Create Service Binding* pop-up window. The order PLacement deployment and the KafkaConnection icon are now connected with a solid black arrow.
 . Scale the *order-placement* deployment to 1 replica. You can do so by clicking on the *order-placement* deployment, and in the details window select the *Details* tab, and click the arrow next to the circle to scale the deployment.
 . Check the logs of the order-placement pod, and notice that the pod successfully connects to the Kafka broker instance.
@@ -130,8 +130,8 @@ Your connector instance will be added to the table of connectors. After a couple
 
 To test the end-to-end integration, you need to create one or more orders on the Globex Coolstuff website. The orders will be sent through REST to the Order Placement service, and from there pushed to a topic on the Streams for Apache Kafka broker. The Connector that you provisioned in the previous section consumes the messages from that topic and calls the link:https://webhook.site[webhook.site, role=external,window=webhook] HTTP endpoint with the message as payload.
 
-. In a browser window, navigate to the the *Developer* perspective in the *globex-%USERID%* namespace of the lab's OpenShift cluster console at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift console^,role=external,window=openshiftconsole]. 
-. Open the *Globex UI* application in a browser tab. To do so, click on the image:console-open-url.png[Open URL, 30, 30] icon next to the blue circle representing the *Globex UI* deployment. Alternatively. open a tab browser and navigate to link:https://globex-ui-globex-%USERID%.apps.%SUBDOMAIN%[Globex UI, role=external,window=openshiftconsole].
+. In a browser window, navigate to the the *Developer* perspective in the *globex-%USERID%* namespace of the lab's OpenShift cluster console at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift console^,role=external,window=openshiftconsole]. 
+. Open the *Globex UI* application in a browser tab. To do so, click on the image:console-open-url.png[Open URL, 30, 30] icon next to the blue circle representing the *Globex UI* deployment. Alternatively. open a tab browser and navigate to link:https://globex-ui-globex-%USERID%.%SUBDOMAIN%[Globex UI, role=external,window=openshiftconsole].
 . Click on *Login* in the upper right corner to simulate a login. In the Login pop-up window, enter an email address and password. The values don't really matter.
 +
 image::globex-coolstuff-login.png[]

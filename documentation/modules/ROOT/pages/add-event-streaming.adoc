@@ -26,7 +26,7 @@ Note:  <<appendix.adoc#service-binding, Click to learn more about Service Bindin
 
 === Explore the environment
 
-. In a browser window, navigate to the console of the lab OpenShift cluster at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[console^,role=external,window=openshiftconsole]. Login with your username and password (`%USERID%/openshift`). Open the *Developer* perspective in the *globex-%USERID%* namespace.
+. In a browser window, navigate to the console of the lab OpenShift cluster at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[console^,role=external,window=openshiftconsole]. Login with your username and password (`%USERID%/openshift`). Open the *Developer* perspective in the *globex-%USERID%* namespace.
 . In the Developer perspective, open the *Topology* view. Expect to see something like this (rearrange the topology as you see fit):
 +
 image::globex-deployment-topology.png[]
@@ -42,7 +42,7 @@ The deployed topology consists of:
 ** `activity-tracking-simulator`: A Quarkus service that simulates user activity events and sends them to the Activity Tracking service.
 . Open the *Globex UI* application in a browser tab. To do so, click on the image:console-open-url.png[Open URL, 30, 30] icon next to the blue circle representing the *Globex UI* deployment. 
 +
-Alternatively. open a browser  tab and navigate to link:https://globex-ui-globex-%USERID%.apps.%SUBDOMAIN%/[globex-ui^, role=external,window=_blank]
+Alternatively. open a browser  tab and navigate to link:https://globex-ui-globex-%USERID%.%SUBDOMAIN%/[globex-ui^, role=external,window=_blank]
 +
 Expect to see the home page of the Globex Coolstuff web application:
 +
@@ -83,7 +83,7 @@ Binding applications to services using Service Binding requires the Service Bind
 
 In this part of the workshop you connect your OpenShift instance to the Streams for Kafka instance you created previously. This can be done from the Developer perspective on the OpenShift console, or using the `rhoas` CLI. In this workshop you use the OpenShift console.
 
-. In a browser window, navigate to the console of your OpenShift cluster at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. Ensure you are in the *Developer* perspective in the *globex-%USERID%* namespace.
+. In a browser window, navigate to the console of your OpenShift cluster at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. Ensure you are in the *Developer* perspective in the *globex-%USERID%* namespace.
 . In the Developer perspective, navigate to the *+Add* view. Locate the *Developer Catalog* card with the *Managed Services* entry
 +
 image::openshift-console-developer-catalog.png[]
@@ -150,7 +150,7 @@ image::rhosak-access-serviceaccount.png[]
 
 You can now bind the Activity Tracking Service and Recommendation Engine to the OpenShift Streams for Apache instance. Through Service Binding the connection details are injected into the application pods. Service Binding to a managed Kafka instance can be done on the Topology view of OpenShift console, or through the `rhoas` CLI. In this workshop we use the OpenShift console.
 
-. In a browser window, navigate to the Topology view of your OpenShift cluster at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. 
+. In a browser window, navigate to the Topology view of your OpenShift cluster at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. 
 . Hover over the *activity-tracking* deployment, and grab the arrow that appears. Drag the arrow to the *KafkaConnection* icon. When reaching the KafkaConnection icon, a text box `Create Service Binding` appears. Release the arrow. Click *Create* in the *Create Service Binding* pop-up window. The Activity Tracking deployment and the KafkaConnection icon are now connected with a solid black arrow.
 +
 image::rhosak-service-binding.png[]
@@ -191,10 +191,10 @@ Now that the Activity Tracking and Recommendation Engine apps are up and running
 
 The deployment topology for the workshop includes an activity simulator service which will generate a number of activity events randomly distributed over a list of products. These activity events are sent to the Activity Tracking service and transformed into Kafka messages in the `globex.tracking` topic. These messages are consumed by the Recommendation Engine app to calculate the top featured products.
 
-. In a browser window, navigate to the Topology view of the lab's OpenShift cluster at link:https://console-openshift-console.apps.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. 
+. In a browser window, navigate to the Topology view of the lab's OpenShift cluster at link:https://console-openshift-console.%SUBDOMAIN%/topology/ns/globex-%USERID%?view=graph[OpenShift Console^,role=external,window=openshiftconsole]. 
 . Open the URL to the *activity-tracking-simulator* application by clicking the image:console-open-url.png[30,30] icon next to the blue circle representing the *activity-tracking-simulator* deployment. Navigate to the `q/swagger-ui` path of the application. 
 +
-Alternatively, open a browser tab and navigate to link:https://activity-tracking-simulator-globex-%USERID%.apps.%SUBDOMAIN%/q/swagger-ui[Activity Tracking Simulator, role=external,window=activity-tracking-simulator].
+Alternatively, open a browser tab and navigate to link:https://activity-tracking-simulator-globex-%USERID%.%SUBDOMAIN%/q/swagger-ui[Activity Tracking Simulator, role=external,window=activity-tracking-simulator].
 . This opens a Swagger UI page which allows you to use the REST API of the application. The REST application has only one operation, `POST /simulate`.
 +
 image::activity-tracking-simulator-swagger-ui.png[]
