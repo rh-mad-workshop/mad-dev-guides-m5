@@ -10,13 +10,13 @@ A schematic overview of the current state of the application after the first pha
 
 image::globex-phase1.png[width=60%]
 
-To futher enhance the Globex Retail application, the business comes up with new requirements
+To further enhance the Globex Retail application, the business comes up with new requirements
 
 * The ability to track user activity on the website and the mobile application.
 * Highlight products which generate most customer interest as featured products.
 * Provide a personalized experience for users on the website and mobile application.
 
-The team decides to use the Kafka ecosystem to track the user activity since it can easily scale. Red Hat AMQ Streams (based on the upstream Strimzi) provides a Kubernetes/OpenShift-centric view of Apache kafka, provideing operator-based installation and upgrades, and cloud-native management of brokers, topics and security.
+The team decides to use the Kafka ecosystem to track the user activity since it can easily scale. Red Hat AMQ Streams (based on the upstream Strimzi) provides a Kubernetes/OpenShift-centric view of Apache kafka, providing operator-based installation and upgrades, and cloud-native management of brokers, topics and security.
 
 
 == Goals of this lab
