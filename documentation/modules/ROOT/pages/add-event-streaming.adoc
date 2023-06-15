@@ -39,8 +39,8 @@ The deployed topology consists of:
 ** `activity-tracking`: The Activity Tracking service. Notice that the deployment of the service is scaled to zero. The service will be scaled up once the connection to the Kafka broker is set up.
 **  `recommendation-engine`: The Recommendation Engine service. Notice that the deployment of the service is scaled to zero. The service will be scaled up once the connection to the Kafka broker is set up.
 ** `activity-tracking-simulator`: A Quarkus service that simulates user activity events and sends them to the Activity Tracking service.
-** `Kafka`: an instance of a Kafka broker, managed by the _AMQ Streams_ operator. In the Topology view, the kafka deployment shows up as a single unit, but in reality it consists of several deployments: a ZooKeeper (3 nodes) to manage and maintain the internal state of the Kafka broker, the Kafka broker itself (2 broker nodes) and the Entity operator, which manages topics and users.
-** `Kafdrop`: a web UI for viewing Kafka topics and browsing consumer groups. The tool displays information such as brokers, topics, partitions, consumers, and lets you view messages.
+** `kafka`: an instance of a Kafka broker, managed by the _AMQ Streams_ operator. In the Topology view, the kafka deployment shows up as a single unit, but in reality it consists of several deployments: a ZooKeeper (3 nodes) to manage and maintain the internal state of the Kafka broker, the Kafka broker itself (2 broker nodes) and the Entity operator, which manages topics and users.
+** `kafdrop`: a web UI for viewing Kafka topics and browsing consumer groups. The tool displays information such as brokers, topics, partitions, consumers, and lets you view messages.
 
 . Open the *Globex UI* application in a browser tab. To do so, click on the image:console-open-url.png[Open URL, 30, 30] icon next to the blue circle representing the *globex-ui* deployment in the Topology view. 
 +
@@ -89,7 +89,7 @@ This creates a topic named *globex.tracking* with a single partition and two rep
 
 . The Kafdrop UI can be used to verify that the topic has been correctly created. In the Topology view of the *globex-%USERID%* namespace, click on the image:console-open-url.png[Open URL, 30, 30] icon next to the blue circle representing the *kafdrop* deployment.
 +
-Alternatively, open a browser tab and navigate to link:https://kafdrop-globex-%USERID%.%SUBDOMAIN%/[kafdrop^, role=external,window=_blank]
+Alternatively, open a browser tab and navigate to link:https://kafdrop-globex-%USERID%.%SUBDOMAIN%/[kafdrop^, role=external,window=_blank].
 
 . This redirects you to the Kafdrop home page. Scroll down to see the list of topics. Expect to see the *globex.tracking* topics, which you just created.
 +
