@@ -179,7 +179,7 @@ Expect to see something like:
 2023-06-13 10:00:33,969 INFO [io.quarkus] (main) Installed features: [cdi, kafka-client, resteasy-reactive, smallrye-context-propagation, smallrye-health, smallrye-reactive-messaging, smallrye-reactive-messaging-kafka, vertx]
 ----
 
-. Go back to the Topology view, and repeat the same steps to bind the *recommendation-engine* deployment to the AMQ Streams kafka instance. Once the service binding is created, scale the deployment to 1 pod.
+. Go back to the Topology view, and scale up the *recommendation-engine* deployment to 1 pod.
 
 . Once the *recommendation-engine* is up and running, check in the Kafdrop UI at link:https://kafdrop-globex-%USERID%.%SUBDOMAIN%/[kafdrop^, role=external,window=_blank] that a number of new topics have been created:
 +
