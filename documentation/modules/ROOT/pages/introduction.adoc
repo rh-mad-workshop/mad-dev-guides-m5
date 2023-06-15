@@ -28,7 +28,7 @@ In this module you will follow this journey:
 
 == Runtime Architecture
 
-image::globex-runtime-architecture.png[]
+image::globex-runtime-architecture-2.png[]
 
 Visitors engage with the Globex retail website in a number of ways:
 
@@ -50,4 +50,4 @@ Here is a view of the deployment architecture
 
 image::globex-deployment-architecture-2.png[]
 
-All services and the website are deployed on Red Hat OpenShift running on the cloud
+All services and the website are deployed on Red Hat OpenShift running on the cloud.
