@@ -16,13 +16,13 @@ To further enhance the Globex Retail application, the business comes up with new
 * Highlight products which generate most customer interest as featured products.
 * Provide a personalized experience for users on the website and mobile application.
 
-The team decides to use the Kafka ecosystem to track the user activity since it can easily scale. Red Hat AMQ Streams (based on the upstream Strimzi) provides a Kubernetes/OpenShift-centric view of Apache kafka, providing operator-based installation and upgrades, and cloud-native management of brokers, topics and security.
+The team decides to use the Kafka ecosystem to track the user activity since it can easily scale. Red Hat AMQ Streams (based on the upstream Strimzi) provides a Kubernetes/OpenShift-centric view of Apache Kafka, providing operator-based installation and upgrades, and cloud-native management of brokers, topics and security.
 
 
 == Goals of this lab
 In this module you will follow this journey:
 
-* Add event streaming to the Globex retail application to track use activity 
+* Add event streaming to the Globex retail application to track user activity 
 * Use Kafka streams to then highlight featured products
 
 
@@ -32,12 +32,12 @@ image::globex-runtime-architecture-2.png[]
 
 Visitors engage with the Globex retail website in a number of ways:
 
-* view list of products
-* search for products
-* like a product / add a product to favourites
-* view product details 
-* add products to the shopping cart
-* place an order
+* View list of products
+* Search for products
+* Like a product / add a product to favourites
+* View product details 
+* Add products to the shopping cart
+* Place an order
 
 Each of these activities generate a stream of events which are captured by  the *User Activity Tracking* service. This service then pushes the events into the Kafka streaming platform. 
 The events can then be consumed by other services such as the *Product Recommendation* service which powers the list of featured products.

@@ -7,7 +7,7 @@
 
 To support the business requirement of capturing and processing user activity on the Globex Coolstuff application, two new services have been developed:
 
-* *Activity Tracking service*: This service exposes a REST endpoint. User activities on the Globex website (such as opening a product page, liking a product etc..) generates an activity payload which is sent to the Activity Tracking REST endpoint. The service transforms this payload into a Kafka message which is sent to a topic on the Kafka broker.
+* *Activity Tracking service*: This service exposes a REST endpoint. User activities on the Globex website (such as opening a product page, liking a product etc.) generates an activity payload which is sent to the Activity Tracking REST endpoint. The service transforms this payload into a Kafka message which is sent to a topic on the Kafka broker.
 * *Recommendation Engine*: This service consumes and processes the events produced by the Activity Tracking service. The service uses the Kafka Streams library to continuously determine the top featured products (the products which generate the most activities).
 The service also exposes a REST endpoint to expose the list of featured products.
 
@@ -16,7 +16,7 @@ Both services are developed using Quarkus, the Quarkus extensions for reactive m
 [#event-goals]
 == Goals of this lab
 
-In this part of the workshop you will connect the Activity Tracking and Recommendation Engine applications to the Apache Kafka broker using link:https://docs.openshift.com/container-platform/4.10/applications/connecting_applications_to_services/understanding-service-binding-operator.html[Service Binding,role=external,window=_blank].
+In this part of the workshop you will connect the Activity Tracking and Recommendation Engine applications to the Apache Kafka broker using link:https://docs.openshift.com/container-platform/latest/applications/connecting_applications_to_services/understanding-service-binding-operator.html[Service Binding,role=external,window=_blank].
 
 You will be using the OpenShift Developer Console to configure the service binding. Note that these steps can also be achieved using the Red Hat OpenShift (`oc`) CLI.
 
